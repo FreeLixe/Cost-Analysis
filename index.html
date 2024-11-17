@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Infrastructure Cost Analysis - 2024</title>
+    <title>Infrastructure & Services Cost Analysis 2024</title>
     <style>
         body {
             font-family: system-ui, -apple-system, sans-serif;
             line-height: 1.6;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f5f7fa;
+            background-color: #f8fafc;
         }
         .card {
             background: white;
@@ -33,226 +33,227 @@
             background-color: #f1f5f9;
             font-weight: 600;
         }
-        .service-header {
+        .tier-header {
             background-color: #0f172a;
             color: white;
             padding: 16px;
             border-radius: 8px;
             margin: 24px 0 16px;
         }
-        .cost-tag {
-            background-color: #dc2626;
-            color: white;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.875rem;
+        .price-highlight {
+            color: #dc2626;
+            font-weight: bold;
         }
         .note {
-            background-color: #fef3c7;
-            padding: 12px;
-            border-radius: 6px;
-            margin: 12px 0;
-        }
-        .download-btn {
-            background-color: #2563eb;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 16px;
-            margin: 20px 0;
-            transition: background-color 0.2s;
-        }
-        .download-btn:hover {
-            background-color: #1d4ed8;
+            background-color: #f0f9ff;
+            padding: 16px;
+            border-radius: 8px;
+            border-left: 4px solid #0ea5e9;
+            margin: 16px 0;
         }
     </style>
 </head>
 <body>
     <div class="card">
-        <h1 style="text-align: center; color: #0f172a;">Detailed Infrastructure Cost Analysis 2024</h1>
-        <button class="download-btn" onclick="window.print()">Download Cost Analysis</button>
+        <h1 style="text-align: center; color: #0f172a;">Comprehensive Infrastructure & Services Cost Analysis 2024</h1>
 
-        <h2 class="service-header">1. Cloud Infrastructure Components</h2>
+        <h2 class="tier-header">1. AWS Infrastructure Components</h2>
+        <table>
+            <tr>
+                <th>Service</th>
+                <th>Instance Type</th>
+                <th>Specifications</th>
+                <th>1000 Users</th>
+                <th>5000 Users</th>
+                <th>10000 Users</th>
+            </tr>
+            <tr>
+                <td>EC2 (App Server)</td>
+                <td>t3.medium</td>
+                <td>2 vCPU, 4GB RAM</td>
+                <td>₹3,320/month</td>
+                <td>2 × ₹3,320/month</td>
+                <td>4 × ₹3,320/month</td>
+            </tr>
+            <tr>
+                <td>EC2 (API Server)</td>
+                <td>t3.large</td>
+                <td>2 vCPU, 8GB RAM</td>
+                <td>₹6,640/month</td>
+                <td>2 × ₹6,640/month</td>
+                <td>3 × ₹6,640/month</td>
+            </tr>
+            <tr>
+                <td>VPC</td>
+                <td>Standard</td>
+                <td>NAT Gateway + Transfer</td>
+                <td>₹4,150/month</td>
+                <td>₹8,300/month</td>
+                <td>₹12,450/month</td>
+            </tr>
+        </table>
+
+        <h2 class="tier-header">2. Database & Caching</h2>
         <table>
             <tr>
                 <th>Service</th>
                 <th>Type</th>
-                <th>Specifications</th>
-                <th>Hourly Cost</th>
-                <th>Monthly Cost</th>
-                <th>Purpose</th>
-            </tr>
-            <tr>
-                <td>AWS EC2</td>
-                <td>t2.micro</td>
-                <td>1 vCPU, 1GB RAM</td>
-                <td>₹1.12</td>
-                <td>₹830.00</td>
-                <td>Server Hosting</td>
+                <th>1000 Users</th>
+                <th>5000 Users</th>
+                <th>10000 Users</th>
             </tr>
             <tr>
                 <td>MongoDB Atlas</td>
-                <td>M40</td>
-                <td>8 vCPU, 32GB RAM</td>
-                <td>₹18.75</td>
-                <td>₹13,900.00</td>
-                <td>App Data Storage</td>
+                <td>M40 (Dedicated)</td>
+                <td>₹13,900/month</td>
+                <td>₹27,800/month</td>
+                <td>₹41,700/month</td>
             </tr>
             <tr>
                 <td>Redis Cache</td>
                 <td>Standard C1</td>
-                <td>1GB, Replicated</td>
-                <td>₹6.71</td>
-                <td>₹4,980.00</td>
-                <td>Caching Layer</td>
+                <td>₹4,980/month</td>
+                <td>₹9,960/month</td>
+                <td>₹16,600/month</td>
             </tr>
         </table>
 
-        <h2 class="service-header">2. Storage Solutions</h2>
+        <h2 class="tier-header">3. Authentication & Communication</h2>
         <table>
             <tr>
                 <th>Service</th>
                 <th>Type</th>
-                <th>Capacity</th>
-                <th>Cost/GB/Month</th>
-                <th>Monthly Cost</th>
+                <th>1000 Users</th>
+                <th>5000 Users</th>
+                <th>10000 Users</th>
             </tr>
             <tr>
-                <td>Cloudinary</td>
-                <td>Plus Plan</td>
-                <td>100GB</td>
-                <td>₹4.15</td>
-                <td>₹3,320.00</td>
+                <td>Clerk</td>
+                <td>Premium Plan</td>
+                <td>₹4,150/month</td>
+                <td>₹12,450/month</td>
+                <td>₹20,750/month</td>
             </tr>
             <tr>
-                <td>AWS S3</td>
-                <td>Standard</td>
-                <td>500GB</td>
-                <td>₹1.66</td>
-                <td>₹830.00</td>
-            </tr>
-        </table>
-
-        <h2 class="service-header">3. Communication Services</h2>
-        <table>
-            <tr>
-                <th>Service</th>
-                <th>Type</th>
-                <th>Volume</th>
-                <th>Unit Cost</th>
-                <th>Monthly Cost</th>
-            </tr>
-            <tr>
-                <td>Azure Communication</td>
-                <td>SMS (OTP)</td>
-                <td>10,000 msgs</td>
+                <td>AWS SMS</td>
+                <td>SNS (OTP)</td>
                 <td>₹0.066/SMS</td>
-                <td>₹660.00</td>
-            </tr>
-            <tr>
-                <td>Push Notifications</td>
-                <td>App Push</td>
-                <td>1 crore notifications</td>
-                <td>-</td>
-                <td>₹850.00</td>
-            </tr>
-            <tr>
-                <td>GetStream.io</td>
-                <td>Video Chat</td>
-                <td>1000 mins/HD</td>
-                <td>₹124.50/1000min</td>
-                <td>₹3,735.00</td>
+                <td>₹0.063/SMS</td>
+                <td>₹0.060/SMS</td>
             </tr>
         </table>
 
-        <h2 class="service-header">4. Platform & Publishing</h2>
+        <h2 class="tier-header">4. Video Streaming (GetStream.io)</h2>
         <table>
             <tr>
-                <th>Service</th>
-                <th>Type</th>
-                <th>Details</th>
+                <th>Plan</th>
+                <th>Features</th>
+                <th>Minutes</th>
                 <th>Cost</th>
             </tr>
             <tr>
-                <td>Play Store</td>
-                <td>License</td>
-                <td>One-time fee</td>
-                <td>$25 (₹2,075)</td>
+                <td>Free Tier</td>
+                <td>SD Quality</td>
+                <td>133,000 mins</td>
+                <td>Free</td>
             </tr>
             <tr>
-                <td>Play Store</td>
-                <td>Commission</td>
-                <td>30% of revenue</td>
-                <td>Variable</td>
+                <td>Standard</td>
+                <td>HD Quality</td>
+                <td>1,000 mins</td>
+                <td>$0.75/month (₹62)</td>
             </tr>
             <tr>
-                <td>Payment Gateway</td>
-                <td>Transaction Fee</td>
-                <td>3% per transaction</td>
-                <td>Variable</td>
+                <td>Enterprise</td>
+                <td>4K Quality</td>
+                <td>1M+ mins</td>
+                <td>Custom Pricing</td>
             </tr>
         </table>
+
+        <h2 class="tier-header">5. Google Play Store Fees</h2>
+        <table>
+            <tr>
+                <th>Revenue Range</th>
+                <th>Service Fee</th>
+                <th>Notes</th>
+            </tr>
+            <tr>
+                <td>First $1M USD/year</td>
+                <td>15%</td>
+                <td>Reduced fee for small businesses</td>
+            </tr>
+            <tr>
+                <td>Above $1M USD/year</td>
+                <td>30%</td>
+                <td>Standard fee</td>
+            </tr>
+            <tr>
+                <td>Subscriptions</td>
+                <td>15%</td>
+                <td>For auto-renewing subscriptions</td>
+            </tr>
+        </table>
+
+        <div class="note">
+            <h3>Monthly Cost Summary by User Tier</h3>
+            <table>
+                <tr>
+                    <th>Component</th>
+                    <th>1000 Users</th>
+                    <th>5000 Users</th>
+                    <th>10000 Users</th>
+                </tr>
+                <tr>
+                    <td>Infrastructure</td>
+                    <td>₹14,110</td>
+                    <td>₹27,920</td>
+                    <td>₹46,320</td>
+                </tr>
+                <tr>
+                    <td>Database & Cache</td>
+                    <td>₹18,880</td>
+                    <td>₹37,760</td>
+                    <td>₹58,300</td>
+                </tr>
+                <tr>
+                    <td>Auth & Comm</td>
+                    <td>₹6,225</td>
+                    <td>₹18,675</td>
+                    <td>₹31,125</td>
+                </tr>
+                <tr>
+                    <td>Video Streaming</td>
+                    <td>₹8,300</td>
+                    <td>₹24,900</td>
+                    <td>₹41,500</td>
+                </tr>
+                <tr>
+                    <td><strong>Total Base Cost</strong></td>
+                    <td class="price-highlight">₹47,515</td>
+                    <td class="price-highlight">₹109,255</td>
+                    <td class="price-highlight">₹177,245</td>
+                </tr>
+            </table>
+        </div>
 
         <div class="note">
             <h3>Important Notes:</h3>
             <ul>
-                <li>All prices are current as of November 2024 and subject to change</li>
-                <li>EC2 costs include AWS Free Tier benefits for the first year</li>
-                <li>MongoDB M40 pricing includes high availability and backup</li>
-                <li>Video chat costs based on GetStream.io pricing for HD quality</li>
-                <li>Storage costs include CDN and transformation services</li>
-                <li>SMS costs may vary based on destination and volume</li>
+                <li>AWS EC2 instances are selected based on performance requirements:
+                    <ul>
+                        <li>t3.medium for application servers</li>
+                        <li>t3.large for API servers</li>
+                    </ul>
+                </li>
+                <li>VPC costs include NAT Gateway, data transfer, and VPN connection</li>
+                <li>MongoDB Atlas M40 includes high availability and automatic backups</li>
+                <li>GetStream.io pricing varies based on video quality and minutes used</li>
+                <li>Google Play Store fees apply to all in-app purchases and subscriptions</li>
+                <li>All prices are in INR unless specified otherwise</li>
+                <li>Prices are current as of November 2024</li>
             </ul>
         </div>
-
-        <h2 class="service-header">5. Cost Summary</h2>
-        <table>
-            <tr>
-                <th>Category</th>
-                <th>Monthly Fixed Costs</th>
-                <th>Variable Costs</th>
-            </tr>
-            <tr>
-                <td>Infrastructure</td>
-                <td>₹19,710.00</td>
-                <td>+ Storage scaling</td>
-            </tr>
-            <tr>
-                <td>Storage</td>
-                <td>₹4,150.00</td>
-                <td>+ ₹1.66/GB</td>
-            </tr>
-            <tr>
-                <td>Communication</td>
-                <td>₹5,245.00</td>
-                <td>+ Usage-based</td>
-            </tr>
-            <tr>
-                <td>Platform Fees</td>
-                <td>₹2,075.00</td>
-                <td>+ Revenue share</td>
-            </tr>
-            <tr>
-                <td><strong>Total Base Cost</strong></td>
-                <td><strong>₹31,180.00</strong></td>
-                <td>+ Variable costs</td>
-            </tr>
-        </table>
-
-        <div class="note">
-            <h3>Scaling Considerations:</h3>
-            <ul>
-                <li>Infrastructure costs scale linearly with user base growth</li>
-                <li>Storage costs increase with user content and media</li>
-                <li>Communication costs directly tied to user activity</li>
-                <li>Consider reserved instances for EC2 to reduce costs</li>
-                <li>MongoDB can be scaled vertically or horizontally based on needs</li>
-            </ul>
-        </div>
-
-        <button class="download-btn" onclick="window.print()">Download Cost Analysis</button>
     </div>
 </body>
 </html>
