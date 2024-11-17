@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Infrastructure Cost Analysis - 2024</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f7fa;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #e2e8f0;
+        }
+        th {
+            background-color: #f1f5f9;
+            font-weight: 600;
+        }
+        .service-header {
+            background-color: #0f172a;
+            color: white;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 24px 0 16px;
+        }
+        .cost-tag {
+            background-color: #dc2626;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.875rem;
+        }
+        .note {
+            background-color: #fef3c7;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 12px 0;
+        }
+        .download-btn {
+            background-color: #2563eb;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 20px 0;
+            transition: background-color 0.2s;
+        }
+        .download-btn:hover {
+            background-color: #1d4ed8;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1 style="text-align: center; color: #0f172a;">Detailed Infrastructure Cost Analysis 2024</h1>
+        <button class="download-btn" onclick="window.print()">Download Cost Analysis</button>
+
+        <h2 class="service-header">1. Cloud Infrastructure Components</h2>
+        <table>
+            <tr>
+                <th>Service</th>
+                <th>Type</th>
+                <th>Specifications</th>
+                <th>Hourly Cost</th>
+                <th>Monthly Cost</th>
+                <th>Purpose</th>
+            </tr>
+            <tr>
+                <td>AWS EC2</td>
+                <td>t2.micro</td>
+                <td>1 vCPU, 1GB RAM</td>
+                <td>₹1.12</td>
+                <td>₹830.00</td>
+                <td>Server Hosting</td>
+            </tr>
+            <tr>
+                <td>MongoDB Atlas</td>
+                <td>M40</td>
+                <td>8 vCPU, 32GB RAM</td>
+                <td>₹18.75</td>
+                <td>₹13,900.00</td>
+                <td>App Data Storage</td>
+            </tr>
+            <tr>
+                <td>Redis Cache</td>
+                <td>Standard C1</td>
+                <td>1GB, Replicated</td>
+                <td>₹6.71</td>
+                <td>₹4,980.00</td>
+                <td>Caching Layer</td>
+            </tr>
+        </table>
+
+        <h2 class="service-header">2. Storage Solutions</h2>
+        <table>
+            <tr>
+                <th>Service</th>
+                <th>Type</th>
+                <th>Capacity</th>
+                <th>Cost/GB/Month</th>
+                <th>Monthly Cost</th>
+            </tr>
+            <tr>
+                <td>Cloudinary</td>
+                <td>Plus Plan</td>
+                <td>100GB</td>
+                <td>₹4.15</td>
+                <td>₹3,320.00</td>
+            </tr>
+            <tr>
+                <td>AWS S3</td>
+                <td>Standard</td>
+                <td>500GB</td>
+                <td>₹1.66</td>
+                <td>₹830.00</td>
+            </tr>
+        </table>
+
+        <h2 class="service-header">3. Communication Services</h2>
+        <table>
+            <tr>
+                <th>Service</th>
+                <th>Type</th>
+                <th>Volume</th>
+                <th>Unit Cost</th>
+                <th>Monthly Cost</th>
+            </tr>
+            <tr>
+                <td>Azure Communication</td>
+                <td>SMS (OTP)</td>
+                <td>10,000 msgs</td>
+                <td>₹0.066/SMS</td>
+                <td>₹660.00</td>
+            </tr>
+            <tr>
+                <td>Push Notifications</td>
+                <td>App Push</td>
+                <td>1 crore notifications</td>
+                <td>-</td>
+                <td>₹850.00</td>
+            </tr>
+            <tr>
+                <td>GetStream.io</td>
+                <td>Video Chat</td>
+                <td>1000 mins/HD</td>
+                <td>₹124.50/1000min</td>
+                <td>₹3,735.00</td>
+            </tr>
+        </table>
+
+        <h2 class="service-header">4. Platform & Publishing</h2>
+        <table>
+            <tr>
+                <th>Service</th>
+                <th>Type</th>
+                <th>Details</th>
+                <th>Cost</th>
+            </tr>
+            <tr>
+                <td>Play Store</td>
+                <td>License</td>
+                <td>One-time fee</td>
+                <td>$25 (₹2,075)</td>
+            </tr>
+            <tr>
+                <td>Play Store</td>
+                <td>Commission</td>
+                <td>30% of revenue</td>
+                <td>Variable</td>
+            </tr>
+            <tr>
+                <td>Payment Gateway</td>
+                <td>Transaction Fee</td>
+                <td>3% per transaction</td>
+                <td>Variable</td>
+            </tr>
+        </table>
+
+        <div class="note">
+            <h3>Important Notes:</h3>
+            <ul>
+                <li>All prices are current as of November 2024 and subject to change</li>
+                <li>EC2 costs include AWS Free Tier benefits for the first year</li>
+                <li>MongoDB M40 pricing includes high availability and backup</li>
+                <li>Video chat costs based on GetStream.io pricing for HD quality</li>
+                <li>Storage costs include CDN and transformation services</li>
+                <li>SMS costs may vary based on destination and volume</li>
+            </ul>
+        </div>
+
+        <h2 class="service-header">5. Cost Summary</h2>
+        <table>
+            <tr>
+                <th>Category</th>
+                <th>Monthly Fixed Costs</th>
+                <th>Variable Costs</th>
+            </tr>
+            <tr>
+                <td>Infrastructure</td>
+                <td>₹19,710.00</td>
+                <td>+ Storage scaling</td>
+            </tr>
+            <tr>
+                <td>Storage</td>
+                <td>₹4,150.00</td>
+                <td>+ ₹1.66/GB</td>
+            </tr>
+            <tr>
+                <td>Communication</td>
+                <td>₹5,245.00</td>
+                <td>+ Usage-based</td>
+            </tr>
+            <tr>
+                <td>Platform Fees</td>
+                <td>₹2,075.00</td>
+                <td>+ Revenue share</td>
+            </tr>
+            <tr>
+                <td><strong>Total Base Cost</strong></td>
+                <td><strong>₹31,180.00</strong></td>
+                <td>+ Variable costs</td>
+            </tr>
+        </table>
+
+        <div class="note">
+            <h3>Scaling Considerations:</h3>
+            <ul>
+                <li>Infrastructure costs scale linearly with user base growth</li>
+                <li>Storage costs increase with user content and media</li>
+                <li>Communication costs directly tied to user activity</li>
+                <li>Consider reserved instances for EC2 to reduce costs</li>
+                <li>MongoDB can be scaled vertically or horizontally based on needs</li>
+            </ul>
+        </div>
+
+        <button class="download-btn" onclick="window.print()">Download Cost Analysis</button>
+    </div>
+</body>
+</html>
