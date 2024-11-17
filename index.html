@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Infrastructure & Services Cost Analysis 2024</title>
+    <title>Detailed Infrastructure Cost Analysis 2024</title>
     <style>
         body {
             font-family: system-ui, -apple-system, sans-serif;
@@ -33,225 +33,240 @@
             background-color: #f1f5f9;
             font-weight: 600;
         }
-        .tier-header {
+        .section-header {
             background-color: #0f172a;
             color: white;
             padding: 16px;
             border-radius: 8px;
             margin: 24px 0 16px;
         }
-        .price-highlight {
-            color: #dc2626;
-            font-weight: bold;
-        }
-        .note {
+        .calculation-note {
             background-color: #f0f9ff;
             padding: 16px;
             border-radius: 8px;
             border-left: 4px solid #0ea5e9;
             margin: 16px 0;
         }
+        .cost-emphasis {
+            color: #dc2626;
+            font-weight: bold;
+        }
+        .formula {
+            background-color: #f8fafc;
+            padding: 8px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
     </style>
 </head>
 <body>
     <div class="card">
-        <h1 style="text-align: center; color: #0f172a;">Comprehensive Infrastructure & Services Cost Analysis 2024</h1>
+        <h1 style="text-align: center; color: #0f172a;">Detailed Infrastructure Cost Analysis 2024</h1>
 
-        <h2 class="tier-header">1. AWS Infrastructure Components</h2>
+        <h2 class="section-header">1. AWS S3 Storage Pricing (Video & Media)</h2>
         <table>
             <tr>
-                <th>Service</th>
-                <th>Instance Type</th>
+                <th>Storage Tier</th>
+                <th>Price per GB/Month</th>
+                <th>1000 Users</th>
+                <th>5000 Users</th>
+                <th>10000 Users</th>
+            </tr>
+            <tr>
+                <td>Standard Storage (First 50 TB)</td>
+                <td>₹1.85</td>
+                <td>500GB = ₹925</td>
+                <td>2.5TB = ₹4,625</td>
+                <td>5TB = ₹9,250</td>
+            </tr>
+            <tr>
+                <td>Infrequent Access</td>
+                <td>₹1.25</td>
+                <td>1TB = ₹1,250</td>
+                <td>5TB = ₹6,250</td>
+                <td>10TB = ₹12,500</td>
+            </tr>
+            <tr>
+                <td>Glacier</td>
+                <td>₹0.36</td>
+                <td>2TB = ₹720</td>
+                <td>10TB = ₹3,600</td>
+                <td>20TB = ₹7,200</td>
+            </tr>
+        </table>
+
+        <div class="calculation-note">
+            <h4>S3 Storage Calculation Assumptions:</h4>
+            <ul>
+                <li>Average video size: 50MB per 5-minute video</li>
+                <li>Active storage: 30% in Standard</li>
+                <li>Recent storage: 30% in IA</li>
+                <li>Archive storage: 40% in Glacier</li>
+                <li>Data transfer out: ₹6.5 per GB</li>
+            </ul>
+        </div>
+
+        <h2 class="section-header">2. MongoDB Atlas Detailed Pricing</h2>
+        <table>
+            <tr>
+                <th>Cluster Type</th>
                 <th>Specifications</th>
                 <th>1000 Users</th>
                 <th>5000 Users</th>
                 <th>10000 Users</th>
             </tr>
             <tr>
-                <td>EC2 (App Server)</td>
-                <td>t3.medium</td>
-                <td>2 vCPU, 4GB RAM</td>
-                <td>₹3,320/month</td>
-                <td>2 × ₹3,320/month</td>
-                <td>4 × ₹3,320/month</td>
+                <td>M40</td>
+                <td>8 vCPU, 32GB RAM</td>
+                <td>₹13,900/month</td>
+                <td>-</td>
+                <td>-</td>
             </tr>
             <tr>
-                <td>EC2 (API Server)</td>
-                <td>t3.large</td>
-                <td>2 vCPU, 8GB RAM</td>
-                <td>₹6,640/month</td>
-                <td>2 × ₹6,640/month</td>
-                <td>3 × ₹6,640/month</td>
+                <td>M50</td>
+                <td>16 vCPU, 64GB RAM</td>
+                <td>-</td>
+                <td>₹27,800/month</td>
+                <td>-</td>
             </tr>
             <tr>
-                <td>VPC</td>
-                <td>Standard</td>
-                <td>NAT Gateway + Transfer</td>
-                <td>₹4,150/month</td>
-                <td>₹8,300/month</td>
-                <td>₹12,450/month</td>
+                <td>M60</td>
+                <td>32 vCPU, 128GB RAM</td>
+                <td>-</td>
+                <td>-</td>
+                <td>₹41,700/month</td>
             </tr>
         </table>
 
-        <h2 class="tier-header">2. Database & Caching</h2>
+        <div class="calculation-note">
+            <h4>MongoDB Scaling Calculations:</h4>
+            <ul>
+                <li>Average document size: 2KB</li>
+                <li>Daily operations per user: ~100</li>
+                <li>Data growth per user/month: ~5MB</li>
+                <li>Indexes: 20% of data size</li>
+                <li>Required IOPS calculation: Users × Daily Operations × Peak Factor (1.5)</li>
+            </ul>
+            <p class="formula">
+                1000 users = 1000 × 100 × 1.5 = 150,000 IOPS (M40 sufficient)<br>
+                5000 users = 5000 × 100 × 1.5 = 750,000 IOPS (M50 required)<br>
+                10000 users = 10000 × 100 × 1.5 = 1,500,000 IOPS (M60 required)
+            </p>
+        </div>
+
+        <h2 class="section-header">3. Clerk Authentication Pricing Details</h2>
         <table>
             <tr>
-                <th>Service</th>
-                <th>Type</th>
+                <th>User Tier</th>
+                <th>Monthly Active Users</th>
+                <th>Cost per MAU</th>
+                <th>Monthly Cost</th>
+                <th>Features Included</th>
+            </tr>
+            <tr>
+                <td>1000 Users</td>
+                <td>Up to 1000</td>
+                <td>₹4.15</td>
+                <td>₹4,150</td>
+                <td>Basic features</td>
+            </tr>
+            <tr>
+                <td>5000 Users</td>
+                <td>Up to 5000</td>
+                <td>₹2.49</td>
+                <td>₹12,450</td>
+                <td>+ Enterprise features</td>
+            </tr>
+            <tr>
+                <td>10000 Users</td>
+                <td>Up to 10000</td>
+                <td>₹2.075</td>
+                <td>₹20,750</td>
+                <td>+ Premium support</td>
+            </tr>
+        </table>
+
+        <div class="calculation-note">
+            <h4>Clerk Pricing Calculation:</h4>
+            <ul>
+                <li>Base price: ₹4.15 per MAU for first 1000 users</li>
+                <li>40% discount for 5000+ users</li>
+                <li>50% discount for 10000+ users</li>
+                <li>Enterprise features included after 5000 users</li>
+            </ul>
+            <p class="formula">
+                1000 users = 1000 × ₹4.15 = ₹4,150<br>
+                5000 users = 5000 × ₹2.49 = ₹12,450<br>
+                10000 users = 10000 × ₹2.075 = ₹20,750
+            </p>
+        </div>
+
+        <h2 class="section-header">4. Combined Monthly Infrastructure Costs</h2>
+        <table>
+            <tr>
+                <th>Component</th>
                 <th>1000 Users</th>
                 <th>5000 Users</th>
                 <th>10000 Users</th>
+            </tr>
+            <tr>
+                <td>S3 Storage Total</td>
+                <td>₹2,895</td>
+                <td>₹14,475</td>
+                <td>₹28,950</td>
             </tr>
             <tr>
                 <td>MongoDB Atlas</td>
-                <td>M40 (Dedicated)</td>
-                <td>₹13,900/month</td>
-                <td>₹27,800/month</td>
-                <td>₹41,700/month</td>
+                <td>₹13,900</td>
+                <td>₹27,800</td>
+                <td>₹41,700</td>
             </tr>
             <tr>
-                <td>Redis Cache</td>
-                <td>Standard C1</td>
-                <td>₹4,980/month</td>
-                <td>₹9,960/month</td>
-                <td>₹16,600/month</td>
+                <td>Clerk Authentication</td>
+                <td>₹4,150</td>
+                <td>₹12,450</td>
+                <td>₹20,750</td>
+            </tr>
+            <tr>
+                <td>Data Transfer (Est.)</td>
+                <td>₹6,500</td>
+                <td>₹32,500</td>
+                <td>₹65,000</td>
+            </tr>
+            <tr>
+                <td><strong>Total Storage & Auth Cost</strong></td>
+                <td class="cost-emphasis">₹27,445</td>
+                <td class="cost-emphasis">₹87,225</td>
+                <td class="cost-emphasis">₹156,400</td>
             </tr>
         </table>
 
-        <h2 class="tier-header">3. Authentication & Communication</h2>
-        <table>
-            <tr>
-                <th>Service</th>
-                <th>Type</th>
-                <th>1000 Users</th>
-                <th>5000 Users</th>
-                <th>10000 Users</th>
-            </tr>
-            <tr>
-                <td>Clerk</td>
-                <td>Premium Plan</td>
-                <td>₹4,150/month</td>
-                <td>₹12,450/month</td>
-                <td>₹20,750/month</td>
-            </tr>
-            <tr>
-                <td>AWS SMS</td>
-                <td>SNS (OTP)</td>
-                <td>₹0.066/SMS</td>
-                <td>₹0.063/SMS</td>
-                <td>₹0.060/SMS</td>
-            </tr>
-        </table>
-
-        <h2 class="tier-header">4. Video Streaming (GetStream.io)</h2>
-        <table>
-            <tr>
-                <th>Plan</th>
-                <th>Features</th>
-                <th>Minutes</th>
-                <th>Cost</th>
-            </tr>
-            <tr>
-                <td>Free Tier</td>
-                <td>SD Quality</td>
-                <td>133,000 mins</td>
-                <td>Free</td>
-            </tr>
-            <tr>
-                <td>Standard</td>
-                <td>HD Quality</td>
-                <td>1,000 mins</td>
-                <td>$0.75/month (₹62)</td>
-            </tr>
-            <tr>
-                <td>Enterprise</td>
-                <td>4K Quality</td>
-                <td>1M+ mins</td>
-                <td>Custom Pricing</td>
-            </tr>
-        </table>
-
-        <h2 class="tier-header">5. Google Play Store Fees</h2>
-        <table>
-            <tr>
-                <th>Revenue Range</th>
-                <th>Service Fee</th>
-                <th>Notes</th>
-            </tr>
-            <tr>
-                <td>First $1M USD/year</td>
-                <td>15%</td>
-                <td>Reduced fee for small businesses</td>
-            </tr>
-            <tr>
-                <td>Above $1M USD/year</td>
-                <td>30%</td>
-                <td>Standard fee</td>
-            </tr>
-            <tr>
-                <td>Subscriptions</td>
-                <td>15%</td>
-                <td>For auto-renewing subscriptions</td>
-            </tr>
-        </table>
-
-        <div class="note">
-            <h3>Monthly Cost Summary by User Tier</h3>
-            <table>
-                <tr>
-                    <th>Component</th>
-                    <th>1000 Users</th>
-                    <th>5000 Users</th>
-                    <th>10000 Users</th>
-                </tr>
-                <tr>
-                    <td>Infrastructure</td>
-                    <td>₹14,110</td>
-                    <td>₹27,920</td>
-                    <td>₹46,320</td>
-                </tr>
-                <tr>
-                    <td>Database & Cache</td>
-                    <td>₹18,880</td>
-                    <td>₹37,760</td>
-                    <td>₹58,300</td>
-                </tr>
-                <tr>
-                    <td>Auth & Comm</td>
-                    <td>₹6,225</td>
-                    <td>₹18,675</td>
-                    <td>₹31,125</td>
-                </tr>
-                <tr>
-                    <td>Video Streaming</td>
-                    <td>₹8,300</td>
-                    <td>₹24,900</td>
-                    <td>₹41,500</td>
-                </tr>
-                <tr>
-                    <td><strong>Total Base Cost</strong></td>
-                    <td class="price-highlight">₹47,515</td>
-                    <td class="price-highlight">₹109,255</td>
-                    <td class="price-highlight">₹177,245</td>
-                </tr>
-            </table>
-        </div>
-
-        <div class="note">
-            <h3>Important Notes:</h3>
+        <div class="calculation-note">
+            <h3>Important Infrastructure Notes:</h3>
             <ul>
-                <li>AWS EC2 instances are selected based on performance requirements:
+                <li>MongoDB Atlas considerations:
                     <ul>
-                        <li>t3.medium for application servers</li>
-                        <li>t3.large for API servers</li>
+                        <li>M40: Suitable for up to 2000 users with high activity</li>
+                        <li>M50: Required for 2000-7000 users</li>
+                        <li>M60: Needed for 7000+ users due to IOPS requirements</li>
+                        <li>Each tier includes automatic backups and monitoring</li>
                     </ul>
                 </li>
-                <li>VPC costs include NAT Gateway, data transfer, and VPN connection</li>
-                <li>MongoDB Atlas M40 includes high availability and automatic backups</li>
-                <li>GetStream.io pricing varies based on video quality and minutes used</li>
-                <li>Google Play Store fees apply to all in-app purchases and subscriptions</li>
-                <li>All prices are in INR unless specified otherwise</li>
-                <li>Prices are current as of November 2024</li>
+                <li>S3 Storage optimization:
+                    <ul>
+                        <li>Lifecycle policies move data to cheaper tiers automatically</li>
+                        <li>Videos older than 30 days move to IA</li>
+                        <li>Videos older than 90 days move to Glacier</li>
+                    </ul>
+                </li>
+                <li>Clerk Authentication includes:
+                    <ul>
+                        <li>Multi-factor authentication</li>
+                        <li>Social login providers</li>
+                        <li>User management dashboard</li>
+                        <li>Custom branding</li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
