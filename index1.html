@@ -1,0 +1,572 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Complete Infrastructure & Services Cost Analysis 2024</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8fafc;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #e2e8f0;
+        }
+        th {
+            background-color: #f1f5f9;
+            font-weight: 600;
+        }
+        .section-header {
+            background-color: #0f172a;
+            color: white;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 24px 0 16px;
+        }
+        .calculation-note {
+            background-color: #f0f9ff;
+            padding: 16px;
+            border-radius: 8px;
+            border-left: 4px solid #0ea5e9;
+            margin: 16px 0;
+        }
+        .cost-emphasis {
+            color: #dc2626;
+            font-weight: bold;
+        }
+        .formula {
+            background-color: #f8fafc;
+            padding: 8px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .mongo-note {
+            background-color: #f0fff4;
+            padding: 16px;
+            border-radius: 8px;
+            border-left: 4px solid #059669;
+            margin: 16px 0;
+        }
+        .aws-note {
+            background-color: #fff7ed;
+            padding: 16px;
+            border-radius: 8px;
+            border-left: 4px solid #ea580c;
+            margin: 16px 0;
+        }
+        .cost-emphasis {
+            color: #dc2626;
+            font-weight: bold;
+        }
+      
+    </style>
+</head>
+<body>
+    <div class="card">
+        <!-- <h1 style="text-align: center; color: #0f172a;">Complete Infrastructure & Services Cost Analysis 2024</h1>
+
+        <h2 class="section-header">1. AWS Core Infrastructure</h2>
+        <table>
+            <tr>
+                <th>Service</th>
+                <th>Instance Type</th>
+                <th>1000 Users</th>
+                <th>5000 Users</th>
+                <th>10000 Users</th>
+            </tr>
+            <tr>
+                <td>EC2 (App Server)</td>
+                <td>t3.medium (2 vCPU, 4GB)</td>
+                <td>₹3,320</td>
+                <td>2 × ₹3,320</td>
+                <td>4 × ₹3,320</td>
+            </tr>
+            <tr>
+                <td>EC2 (API Server)</td>
+                <td>t3.large (2 vCPU, 8GB)</td>
+                <td>₹6,640</td>
+                <td>2 × ₹6,640</td>
+                <td>3 × ₹6,640</td>
+            </tr>
+            <tr>
+                <td>VPC + NAT Gateway</td>
+                <td>Standard</td>
+                <td>₹4,150</td>
+                <td>₹8,300</td>
+                <td>₹12,450</td>
+            </tr>
+        </table> -->
+        <h2 class="section-header">1. Detailed EC2 Pricing Analysis</h2>
+        
+        <h3>1.1 Regional EC2 Hourly Rates</h3>
+        <table>
+            <tr>
+                <th>Instance</th>
+                <th>Region</th>
+                <th>Hourly (USD)</th>
+                <th>Hourly (INR)</th>
+                <th>Monthly (730h)</th>
+                <th>vCPU</th>
+                <th>Memory</th>
+            </tr>
+            <tr>
+                <td rowspan="3">t3.medium</td>
+                <td>US East</td>
+                <td>$0.0416</td>
+                <td>₹3.45</td>
+                <td>₹2,520</td>
+                <td rowspan="3">2</td>
+                <td rowspan="3">4GB</td>
+            </tr>
+            <tr>
+                <td>Mumbai (Default)</td>
+                <td>$0.0444</td>
+                <td>₹3.69</td>
+                <td>₹2,693</td>
+            </tr>
+            <tr>
+                <td>Singapore</td>
+                <td>$0.0472</td>
+                <td>₹3.92</td>
+                <td>₹2,862</td>
+            </tr>
+            <tr>
+                <td rowspan="3">t3.large</td>
+                <td>US East</td>
+                <td>$0.0832</td>
+                <td>₹6.91</td>
+                <td>₹5,040</td>
+                <td rowspan="3">2</td>
+                <td rowspan="3">8GB</td>
+            </tr>
+            <tr>
+                <td>Mumbai (Default)</td>
+                <td>$0.0888</td>
+                <td>₹7.37</td>
+                <td>₹5,380</td>
+            </tr>
+            <tr>
+                <td>Singapore</td>
+                <td>$0.0944</td>
+                <td>₹7.84</td>
+                <td>₹5,723</td>
+            </tr>
+        </table>
+
+        <div class="aws-note">
+            <h4>EC2 Cost Calculation Formula:</h4>
+            <p class="formula">
+Hourly Cost = Base Instance Price × Region Factor
+Monthly Cost = Hourly Cost × 730 hours
+Annual Cost = Monthly Cost × 12
+
+Region Factors:
+- US East: 1.0x (base)
+- Mumbai: 1.067x
+- Singapore: 1.135x
+
+Reserved Instance Discount:
+- 1 Year Term: ~40% savings
+- 3 Year Term: ~60% savings</p>
+        </div>
+
+        <h3>1.2 EC2 Performance Metrics</h3>
+        <table>
+            <tr>
+                <th>Instance Type</th>
+                <th>Network Performance</th>
+                <th>EBS Bandwidth</th>
+                <th>CPU Credits/hour</th>
+                <th>Max CPU Credits</th>
+            </tr>
+            <tr>
+                <td>t3.medium</td>
+                <td>Up to 5 Gbps</td>
+                <td>2,085 Mbps</td>
+                <td>24</td>
+                <td>576</td>
+            </tr>
+            <tr>
+                <td>t3.large</td>
+                <td>Up to 5 Gbps</td>
+                <td>2,780 Mbps</td>
+                <td>36</td>
+                <td>864</td>
+            </tr>
+        </table>
+
+        <h3>1.3 EC2 Instance Scaling by User Load</h3>
+        <table>
+            <tr>
+                <th>Users</th>
+                <th>App Servers (t3.medium)</th>
+                <th>API Servers (t3.large)</th>
+                <th>Monthly Cost (Mumbai)</th>
+                <th>Load Per Server</th>
+            </tr>
+            <tr>
+                <td>1,000</td>
+                <td>1 × ₹2,693</td>
+                <td>1 × ₹5,380</td>
+                <td>₹8,073</td>
+                <td>~50 req/sec</td>
+            </tr>
+            <tr>
+                <td>5,000</td>
+                <td>2 × ₹2,693</td>
+                <td>2 × ₹5,380</td>
+                <td>₹16,146</td>
+                <td>~125 req/sec</td>
+            </tr>
+            <tr>
+                <td>10,000</td>
+                <td>4 × ₹2,693</td>
+                <td>3 × ₹5,380</td>
+                <td>₹32,292</td>
+                <td>~250 req/sec</td>
+            </tr>
+        </table>
+
+  
+        <h2 class="section-header">2. Storage & Database</h2>
+        <table>
+            <tr>
+                <th>Service</th>
+                <th>Specifications</th>
+                <th>1000 Users</th>
+                <th>5000 Users</th>
+                <th>10000 Users</th>
+            </tr>
+            <tr>
+                <td>S3 Standard</td>
+                <td>Active Storage</td>
+                <td>₹925</td>
+                <td>₹4,625</td>
+                <td>₹9,250</td>
+            </tr>
+            <tr>
+                <td>S3 IA</td>
+                <td>Infrequent Access</td>
+                <td>₹1,250</td>
+                <td>₹6,250</td>
+                <td>₹12,500</td>
+            </tr>
+            <tr>
+                <td>S3 Glacier</td>
+                <td>Archive Storage</td>
+                <td>₹720</td>
+                <td>₹3,600</td>
+                <td>₹7,200</td>
+            </tr>
+            <tr>
+                <td>MongoDB Atlas</td>
+                <td>M40/M50/M60</td>
+                <td>₹13,900</td>
+                <td>₹27,800</td>
+                <td>₹41,700</td>
+            </tr>
+            <tr>
+                <td>Redis Cache</td>
+                <td>Standard C1/Premium</td>
+                <td>₹4,980</td>
+                <td>₹9,960</td>
+                <td>₹16,600</td>
+            </tr>
+        </table>
+        <h2 class="section-header">2. MongoDB Atlas Detailed Pricing</h2>
+        
+        <h3>2.1 Cluster Specifications & Pricing</h3>
+        <table>
+            <tr>
+                <th>Tier</th>
+                <th>Resources</th>
+                <th>Storage</th>
+                <th>IOPS</th>
+                <th>Monthly Cost</th>
+                <th>Cost per User</th>
+            </tr>
+            <tr>
+                <td>M40</td>
+                <td>8 vCPU, 32GB RAM</td>
+                <td>500GB</td>
+                <td>15,000</td>
+                <td>₹13,900</td>
+                <td>₹13.90 (1000 users)</td>
+            </tr>
+            <tr>
+                <td>M50</td>
+                <td>16 vCPU, 64GB RAM</td>
+                <td>1000GB</td>
+                <td>30,000</td>
+                <td>₹27,800</td>
+                <td>₹5.56 (5000 users)</td>
+            </tr>
+            <tr>
+                <td>M60</td>
+                <td>32 vCPU, 128GB RAM</td>
+                <td>2000GB</td>
+                <td>60,000</td>
+                <td>₹41,700</td>
+                <td>₹4.17 (10000 users)</td>
+            </tr>
+        </table>
+
+        <div class="mongo-note">
+            <h4>MongoDB Scaling Calculations:</h4>
+            <p class="formula">
+Per User Requirements:
+- Documents: ~50 per user
+- Avg Document Size: 2KB
+- Daily Operations: 100 per user
+- Monthly Data Growth: 5MB per user
+
+IOPS Calculation:
+Required IOPS = (Users × Daily Operations × Peak Factor) / Seconds in Day
+Example: 1000 users = (1000 × 100 × 1.5) / 86400 = ~1.74 IOPS
+
+Storage Calculation:
+Required Storage = (Users × Monthly Growth × Retention × Index Factor)
+Example: 1000 users = (1000 × 5MB × 3 months × 1.2) = 18GB
+
+Cluster Selection Criteria:
+- IOPS Threshold: 80% of max IOPS
+- Memory: (Active Dataset × 1.5) should fit in RAM
+- Storage: 70% utilization threshold</p>
+        </div>
+
+        <h2 class="section-header">3. Authentication & Communication</h2>
+        <table>
+            <tr>
+                <th>Service</th>
+                <th>Type</th>
+                <th>1000 Users</th>
+                <th>5000 Users</th>
+                <th>10000 Users</th>
+            </tr>
+            <tr>
+                <td>Clerk</td>
+                <td>MAU Based</td>
+                <td>₹4,150</td>
+                <td>₹12,450</td>
+                <td>₹20,750</td>
+            </tr>
+            <tr>
+                <td>SMS (AWS SNS)</td>
+                <td>OTP/Notifications</td>
+                <td>₹660</td>
+                <td>₹3,300</td>
+                <td>₹6,600</td>
+            </tr>
+            <tr>
+                <td>Push Notifications</td>
+                <td>AWS SNS</td>
+                <td>₹830</td>
+                <td>₹2,490</td>
+                <td>₹4,150</td>
+            </tr>
+        </table>
+
+        <h2 class="section-header">4. Video Streaming (GetStream.io)</h2>
+        <table>
+            <tr>
+                <th>Tier</th>
+                <th>Features</th>
+                <th>1000 Users</th>
+                <th>5000 Users</th>
+                <th>10000 Users</th>
+            </tr>
+            <tr>
+                <td>Basic</td>
+                <td>SD Quality</td>
+                <td>Free</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>Standard</td>
+                <td>HD Quality</td>
+                <td>-</td>
+                <td>₹24,900</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>Enterprise</td>
+                <td>4K Quality</td>
+                <td>-</td>
+                <td>-</td>
+                <td>₹41,500</td>
+            </tr>
+        </table>
+
+        <h2 class="section-header">5. Platform & Payment Services</h2>
+        <table>
+            <tr>
+                <th>Service</th>
+                <th>Type</th>
+                <th>Fee Structure</th>
+                <th>Notes</th>
+            </tr>
+            <tr>
+                <td>Google Play Store</td>
+                <td>First $1M/year</td>
+                <td>15%</td>
+                <td>Reduced fee tier</td>
+            </tr>
+            <tr>
+                <td>Google Play Store</td>
+                <td>Above $1M/year</td>
+                <td>30%</td>
+                <td>Standard fee</td>
+            </tr>
+            <tr>
+                <td>Payment Gateway</td>
+                <td>Standard</td>
+                <td>2% + GST</td>
+                <td>Per transaction</td>
+            </tr>
+        </table>
+
+        <!-- <div class="calculation-note">
+            <h3>Total Monthly Infrastructure Costs</h3>
+            <table>
+                <tr>
+                    <th>Component</th>
+                    <th>1000 Users</th>
+                    <th>5000 Users</th>
+                    <th>10000 Users</th>
+                </tr>
+                <tr>
+                    <td>AWS Infrastructure</td>
+                    <td>₹14,110</td>
+                    <td>₹27,920</td>
+                    <td>₹46,320</td>
+                </tr>
+                <tr>
+                    <td>Storage & Database</td>
+                    <td>₹21,775</td>
+                    <td>₹52,235</td>
+                    <td>₹87,250</td>
+                </tr>
+                <tr>
+                    <td>Auth & Communication</td>
+                    <td>₹5,640</td>
+                    <td>₹18,240</td>
+                    <td>₹31,500</td>
+                </tr>
+                <tr>
+                    <td>Video Streaming</td>
+                    <td>₹0</td>
+                    <td>₹24,900</td>
+                    <td>₹41,500</td>
+                </tr>
+                <tr>
+                    <td><strong>Total Fixed Costs</strong></td>
+                    <td class="cost-emphasis">₹41,525</td>
+                    <td class="cost-emphasis">₹123,295</td>
+                    <td class="cost-emphasis">₹206,570</td>
+                </tr>
+            </table>
+        </div> -->
+
+        <div class="calculation-note">
+            <h3>Total Infrastructure Costs with Regional Pricing (Mumbai)</h3>
+            <table>
+                <tr>
+                    <th>Component</th>
+                    <th>1000 Users</th>
+                    <th>5000 Users</th>
+                    <th>10000 Users</th>
+                </tr>
+                <tr>
+                    <td>AWS EC2 (Mumbai)</td>
+                    <td>₹8,073</td>
+                    <td>₹16,146</td>
+                    <td>₹32,292</td>
+                </tr>
+                <tr>
+                    <td>MongoDB Atlas</td>
+                    <td>₹13,900</td>
+                    <td>₹27,800</td>
+                    <td>₹41,700</td>
+                </tr>
+                <tr>
+                    <td>Storage & Database</td>
+                    <td>₹21,775</td>
+                    <td>₹52,235</td>
+                    <td>₹87,250</td>
+                </tr>
+                <tr>
+                    <td>Auth & Communication</td>
+                    <td>₹5,640</td>
+                    <td>₹18,240</td>
+                    <td>₹31,500</td>
+                </tr>
+                <tr>
+                    <td>Video Streaming</td>
+                    <td>₹0</td>
+                    <td>₹24,900</td>
+                    <td>₹41,500</td>
+                </tr>
+                <tr>
+                    <td><strong>Total Monthly Costs</strong></td>
+                    <td class="cost-emphasis">₹49,388</td>
+                    <td class="cost-emphasis">₹139,321</td>
+                    <td class="cost-emphasis">₹234,242</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="calculation-note">
+            <h3>Important Notes:</h3>
+            <ul>
+                <li>MongoDB Atlas scaling:
+                    <ul>
+                        <li>M40 (8 vCPU, 32GB RAM) for up to 2000 users</li>
+                        <li>M50 (16 vCPU, 64GB RAM) for up to 7000 users</li>
+                        <li>M60 (32 vCPU, 128GB RAM) for 10000+ users</li>
+                    </ul>
+                </li>
+                <li>S3 Storage optimization:
+                    <ul>
+                        <li>Lifecycle policies automatically manage tiers</li>
+                        <li>30-day retention in Standard</li>
+                        <li>90-day retention in IA</li>
+                        <li>Archive storage in Glacier</li>
+                    </ul>
+                </li>
+                <li>VPC costs include:
+                    <ul>
+                        <li>NAT Gateway charges</li>
+                        <li>Data transfer costs</li>
+                        <li>VPN connection</li>
+                    </ul>
+                </li>
+                <li>Redis Cache scaling:
+                    <ul>
+                        <li>Standard C1 for up to 5000 users</li>
+                        <li>Premium tier for 10000+ users</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
